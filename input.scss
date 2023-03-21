@@ -6,6 +6,15 @@
   background-color: rgba(255, 182, 193, 0.9);
 }
 
+%btnStyle {
+  border: 0;
+  background-color: transparent;
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
 body {
   margin: 0;
   font-family: "Pretendard";
@@ -30,14 +39,58 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: rgb(255, 255, 255);
 
   .time {
     font-size: 120px;
-    color: rgb(255, 255, 255);
   }
 
   .quotes {
-    @extend %mainContent;
+    position: relative;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin-top: 40px;
+    border-radius: 8px;
+    padding: 8px 16px;
+
+    .quotesAddBtn {
+      @extend %btnStyle;
+      background-color: white;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+      display: none;
+    }
+
+    &:hover {
+      .quotesAddBtn {
+        display: inline-block;
+      }
+    }
+  }
+
+  .newQuotes {
+    margin-top: 16px;
+    display: none;
+
+    .newQuotesInput {
+      border: 0;
+      border-radius: 8px;
+      font-size: 32px;
+      padding: 4px 8px;
+
+      &:focus {
+        outline: 0;
+      }
+    }
+
+    .newQuotesBtn {
+      @extend %btnStyle;
+      margin-left: 20px;
+      background-color: darkcyan;
+      color: white;
+    }
   }
 
   .search {
