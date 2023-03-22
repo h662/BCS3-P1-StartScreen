@@ -158,8 +158,62 @@ main {
     top: 0;
     right: 0;
     margin: 24px;
-    width: 256px;
-    height: 256px;
-    background-color: deeppink;
+
+    img {
+      width: 256px;
+      height: 256px;
+    }
+
+    .nftHover {
+      position: absolute;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      width: 256px;
+      height: 256px;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      a {
+        @extend %buttonStyle;
+        background-color: aliceblue;
+        color: black;
+      }
+
+      .nftHoverClose {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 0;
+        margin: -8px;
+        border: 0;
+        border-radius: 9999px;
+        font-size: 20px;
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    &:hover {
+      .nftHover {
+        display: flex;
+      }
+    }
+  }
+
+  .nftView {
+    @extend %buttonStyle;
+
+    background-color: aliceblue;
+    color: black;
+
+    position: fixed;
+    display: none;
+    top: 0;
+    right: 0;
+    margin: 24px;
   }
 }
