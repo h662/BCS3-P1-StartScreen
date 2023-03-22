@@ -60,3 +60,45 @@ function onClickRegist() {
   newQuotes.style.display = "none";
   quotesMsg.innerText = newQuotesInput.value;
 }
+
+let isLoad = false;
+
+async function onClickSearch() {
+  const searchInput = document.querySelector(".searchInput");
+  const searchResult = document.querySelector(".searchResult");
+
+  if (!searchInput.value) {
+    return;
+  }
+  if (isLoad) {
+    // 삭제
+    console.log("로딩중입니다.");
+    return;
+  }
+
+  const question = searchInput.value;
+  isLoad = true;
+  searchInput.value = "검색 중 입니다... 잠시만 기다려주세요.";
+
+  const response = await axios.post(
+    "http://localhost:3010/chat",
+    {
+      question,
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer BLOCKCHAINSCHOOL3`,
+      },
+    }
+  );
+
+  if (response.status == 200) {
+    searchResult.style.display = "inline";
+    searchResult.innerText = response.data.choices[0].message.content;
+    console.log(response);
+  }
+
+  searchInput.value = "";
+  isLoad = false;
+}

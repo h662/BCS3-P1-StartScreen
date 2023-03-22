@@ -1,18 +1,37 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 
-%mainContent {
-  margin: 60px 0;
-  font-size: 40px;
-  background-color: rgba(255, 182, 193, 0.9);
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-%btnStyle {
+%buttonStyle {
   border: 0;
   background-color: transparent;
   border-radius: 16px;
   padding: 16px 32px;
   font-size: 20px;
   font-weight: 600;
+}
+
+%inputStyle {
+  border: 0;
+  border-radius: 8px;
+  padding: 4px 8px;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+%opacityBackgroundStyle {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 8px 16px;
 }
 
 body {
@@ -46,15 +65,14 @@ main {
   }
 
   .quotes {
+    @extend %opacityBackgroundStyle;
+
     position: relative;
     font-size: 40px;
-    background-color: rgba(0, 0, 0, 0.2);
     margin-top: 40px;
-    border-radius: 8px;
-    padding: 8px 16px;
 
-    .quotesAddBtn {
-      @extend %btnStyle;
+    .quotesAddButton {
+      @extend %buttonStyle;
       background-color: white;
       position: absolute;
       top: 50%;
@@ -64,7 +82,7 @@ main {
     }
 
     &:hover {
-      .quotesAddBtn {
+      .quotesAddButton {
         display: inline-block;
       }
     }
@@ -75,18 +93,12 @@ main {
     display: none;
 
     .newQuotesInput {
-      border: 0;
-      border-radius: 8px;
+      @extend %inputStyle;
       font-size: 32px;
-      padding: 4px 8px;
-
-      &:focus {
-        outline: 0;
-      }
     }
 
-    .newQuotesBtn {
-      @extend %btnStyle;
+    .newQuotesButton {
+      @extend %buttonStyle;
       margin-left: 20px;
       background-color: darkcyan;
       color: white;
@@ -94,7 +106,51 @@ main {
   }
 
   .search {
-    @extend %mainContent;
+    margin: 60px 0;
+    font-size: 32px;
+
+    .searchTitle {
+      @extend %opacityBackgroundStyle;
+
+      display: flex;
+      align-items: center;
+
+      .searchLogo {
+        width: 32px;
+        height: 32px;
+        animation: spin 20s linear infinite;
+        margin-right: 20px;
+        background-color: white;
+        border-radius: 9999px;
+      }
+    }
+    .searchForm {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+
+      .searchInput {
+        @extend %inputStyle;
+        width: 100%;
+        font-size: 20px;
+      }
+
+      .searchButton {
+        @extend %buttonStyle;
+        background-color: aquamarine;
+        margin-left: 12px;
+        width: 25%;
+      }
+    }
+  }
+
+  .searchResult {
+    display: none;
+    font-size: 20px;
+    color: black;
+    padding: 40px;
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
   }
 
   .nft {
