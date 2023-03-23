@@ -1,3 +1,5 @@
+// 깃 reset
+
 const QUOTES = "quotes";
 
 const time = document.querySelector(".time");
