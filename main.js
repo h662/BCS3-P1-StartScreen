@@ -71,8 +71,6 @@ async function onClickSearch() {
     return;
   }
   if (isLoad) {
-    // 삭제
-    console.log("로딩중입니다.");
     return;
   }
 
@@ -81,7 +79,7 @@ async function onClickSearch() {
   searchInput.value = "검색 중 입니다... 잠시만 기다려주세요.";
 
   const response = await axios.post(
-    "http://localhost:3010/chat",
+    "https://holy-fire-2749.fly.dev/chat",
     {
       question,
     },
